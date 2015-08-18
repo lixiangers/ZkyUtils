@@ -4,6 +4,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.zky.zkyutils.http.VolleryRequestSender;
+import com.zky.zkyutilsdemo.http.CheckVersionResponse;
+import com.zky.zkyutilsdemo.http.VersionRequest;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +21,25 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.bt_check_version).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                VersionRequest versionRequest = new VersionRequest(new Response.Listener<CheckVersionResponse>() {
+                    @Override
+                    public void onResponse(CheckVersionResponse response) {
+                        Toast.makeText(getApplication(), response.update == 1 ? "需要升级" : "最新版本", Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplication(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                VolleryRequestSender.getInstance(MyApplication.instace).send(versionRequest);
+            }
+        });
     }
 
 
