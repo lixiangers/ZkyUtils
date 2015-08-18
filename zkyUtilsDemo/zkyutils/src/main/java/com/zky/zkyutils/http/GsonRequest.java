@@ -18,7 +18,9 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/*
+  Json 请求的request 类
+ */
 public abstract class GsonRequest<T> extends Request<String> {
 
     private Response.Listener<T> mListener;

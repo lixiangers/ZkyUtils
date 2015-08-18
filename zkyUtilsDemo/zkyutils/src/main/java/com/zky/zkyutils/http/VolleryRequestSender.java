@@ -6,6 +6,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+/*
+  Volley queue 帮助类
+ */
 public class VolleryRequestSender {
 
     private volatile static VolleryRequestSender mInstance;
