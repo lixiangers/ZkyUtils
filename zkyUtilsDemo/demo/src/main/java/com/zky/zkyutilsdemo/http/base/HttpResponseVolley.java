@@ -1,7 +1,10 @@
-package com.zky.zkyutilsdemo.http;
+package com.zky.zkyutilsdemo.http.base;
 
 import com.zky.zkyutils.http.IVolleyResponse;
 
+/*
+  http response 的格式类，一般的response有统一的格式
+ */
 public class HttpResponseVolley<T> implements IVolleyResponse<T> {
     private int status;
 

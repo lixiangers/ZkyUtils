@@ -1,8 +1,10 @@
-package com.zky.zkyutilsdemo.http;
+package com.zky.zkyutilsdemo.http.base;
 
 import com.zky.zkyutils.http.IVolleyRequest;
 
-
+/*
+ 所有请求的格式类，比如都有统一的字段，可以放在这个类中
+ */
 public class HttpRequestVolley<E extends BaseRequest> implements IVolleyRequest {
 
     protected E params;

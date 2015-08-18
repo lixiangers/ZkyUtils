@@ -1,4 +1,4 @@
-package com.zky.zkyutilsdemo.http;
+package com.zky.zkyutilsdemo.http.base;
 
 import com.android.volley.Response;
 import com.zky.zkyutils.http.GsonRequest;
@@ -14,11 +14,17 @@ public abstract class BaseRequest<T> extends GsonRequest<T> {
     }
 
 
+    /*
+    添加判断网络是否连接的方法，用于错误信息的判断
+     */
     @Override
     public boolean isConnectNetwork() {
         return DeviceUtils.isNetworkConnected(MyApplication.instace);
     }
 
+    /*
+     http 请求的内容
+     */
     @Override
     public IVolleyRequest getVolleyRequest() {
         return new HttpRequestVolley(this);
