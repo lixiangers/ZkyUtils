@@ -9,20 +9,20 @@ import com.android.volley.toolbox.Volley;
 /*
   Volley queue 帮助类
  */
-public class VolleryRequestSender {
+public class VolleyRequestSender {
 
-    private volatile static VolleryRequestSender mInstance;
+    private volatile static VolleyRequestSender mInstance;
     private RequestQueue mQueue;
 
-    private VolleryRequestSender(Context context) {
+    private VolleyRequestSender(Context context) {
         mQueue = Volley.newRequestQueue(context);
     }
 
-    public static VolleryRequestSender getInstance(Context context) {
+    public static VolleyRequestSender getInstance(Context context) {
         if (mInstance == null)
-            synchronized (VolleryRequestSender.class) {
+            synchronized (VolleyRequestSender.class) {
                 if (mInstance == null) {
-                    mInstance = new VolleryRequestSender(context);
+                    mInstance = new VolleyRequestSender(context);
                 }
             }
         return mInstance;
