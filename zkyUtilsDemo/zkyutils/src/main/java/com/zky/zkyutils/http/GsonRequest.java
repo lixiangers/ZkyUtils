@@ -27,10 +27,10 @@ public abstract class GsonRequest<T> extends Request<String> {
 
     private Type responseType;
 
-    public GsonRequest(Response.Listener<T> responseListener, Response.ErrorListener errorListener, Type type) {
+    public GsonRequest(Response.Listener<T> responseListener, Response.ErrorListener errorListener, Type responseValueType) {
         super(errorListener);
         setRetryPolicy(new DefaultRetryPolicy(Constants.HTTP_RETRY_NUMBER, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        this.responseType = type;
+        this.responseType = responseValueType;
         this.mListener = responseListener;
     }
 
