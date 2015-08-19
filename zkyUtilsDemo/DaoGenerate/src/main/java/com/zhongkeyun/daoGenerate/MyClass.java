@@ -19,7 +19,7 @@ public class MyClass {
 
         addDeliveryOrder(schema);
         addStore(schema);
-        new DaoGenerator().generateAll(schema, "..\\HuangTaiJi\\app\\src-dao"); // 生成的类文件对应的位置
+        new DaoGenerator().generateAll(schema, "..\\zkyUtilsDemo\\demo\\src-dao"); // 生成的类文件对应的位置
     }
 
     private static void addDeliveryOrder(Schema schema) {
