@@ -9,10 +9,18 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 import com.zky.zkyutils.http.VolleyRequestSender;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
 import com.zky.zkyutilsdemo.http.VersionRequest;
+
+import java.io.File;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -63,6 +71,52 @@ public class MainActivity extends ActionBarActivity {
                 VolleyRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
             }
         });
+    }
+
+    private void downLoadFile() {
+        HttpUtils httpUtils = new HttpUtils();
+        httpUtils.download("url", "path", true, true, new RequestCallBack<File>() {
+            @Override
+            public void onLoading(long total, long current, boolean isUploading) {
+                super.onLoading(total, current, isUploading);
+            }
+
+            @Override
+            public void onSuccess(ResponseInfo<File> result) {
+
+            }
+
+            @Override
+            public void onFailure(HttpException error, String msg) {
+            }
+        });
+    }
+
+    private void uploadFile() {
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("name", "value");
+        params.addBodyParameter("file", new File("path"));
+        HttpUtils http = new HttpUtils();
+        http.send(HttpRequest.HttpMethod.POST,
+                "uploadUrl",
+                params,
+                new RequestCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onLoading(long total, long current, boolean isUploading) {
+                    }
+
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                    }
+
+                    @Override
+                    public void onFailure(HttpException error, String msg) {
+                    }
+                });
     }
 
 
