@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
                 });
 
                 versionRequest.version = "1.0.0";
-                VolleyRequestSender.getInstance(MyApplication.instace).send(versionRequest);
+                VolleyRequestSender.getInstance(MyApplication.instance).send(versionRequest);
             }
         });
 
@@ -68,7 +68,7 @@ public class MainActivity extends ActionBarActivity {
                 bindCIDRequest.client_id = "2342342424";
                 bindCIDRequest.token = "24234dsfdsifdfsdf";
 
-                VolleyRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
+                VolleyRequestSender.getInstance(MyApplication.instance).send(bindCIDRequest);
             }
         });
     }

@@ -19,7 +19,7 @@ public abstract class BaseRequest<T> extends GsonRequest<T> implements IVolleyRe
      */
     @Override
     public boolean isConnectNetwork() {
-        return DeviceUtils.isNetworkConnected(MyApplication.instace);
+        return DeviceUtils.isNetworkConnected(MyApplication.instance);
     }
 
     /*
