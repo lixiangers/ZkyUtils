@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.zky.zkyutils.utils.Constants;
 import com.zky.zkyutils.utils.JsonUtils;
+import com.zky.zkyutils.utils.LogUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
@@ -42,6 +43,8 @@ public abstract class GsonRequest<T> extends Request<String> {
         } catch (UnsupportedEncodingException e) {
             jsonString = new String(response.data);
         }
+
+        LogUtils.d(Constants.HTTP_TAG, "response=============>" + jsonString);
 
         if (response.statusCode == 200) {
             return Response.success(jsonString,
@@ -88,6 +91,7 @@ public abstract class GsonRequest<T> extends Request<String> {
     public byte[] getBody() throws AuthFailureError {
         byte[] bodyString = null;
         String json = JsonUtils.convertObjectToJson(getVolleyRequest());
+        LogUtils.d(Constants.HTTP_TAG, "request data=============>" + json);
 
         bodyString = json.getBytes();
         return bodyString;
@@ -114,7 +118,9 @@ public abstract class GsonRequest<T> extends Request<String> {
 
     @Override
     public String getUrl() {
-        return getApiUrl();
+        String apiUrl = getApiUrl();
+        LogUtils.d(Constants.HTTP_TAG, "request url=============>" + apiUrl);
+        return apiUrl;
     }
 
     @Override
