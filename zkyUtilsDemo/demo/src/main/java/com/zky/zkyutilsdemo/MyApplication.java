@@ -10,10 +10,12 @@ import green.dao.htj.upgrade.MyOpenHelper;
 
 public class MyApplication extends BaseApplication {
     private DaoSession daoSession;
+    public static MyApplication instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance=this;
     }
 
     /*
