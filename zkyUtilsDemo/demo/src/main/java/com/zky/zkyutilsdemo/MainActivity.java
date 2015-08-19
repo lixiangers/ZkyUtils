@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.zky.zkyutils.http.VolleryRequestSender;
+import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
 import com.zky.zkyutilsdemo.http.VersionRequest;
 
@@ -39,6 +40,28 @@ public class MainActivity extends ActionBarActivity {
 
                 versionRequest.version = "1.0.0";
                 VolleryRequestSender.getInstance(MyApplication.instace).send(versionRequest);
+            }
+        });
+
+        findViewById(R.id.bt_bindCID).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BindCIDRequest bindCIDRequest = new BindCIDRequest(new Response.Listener<Object>() {
+                    @Override
+                    public void onResponse(Object response) {
+                        Toast.makeText(getApplication(), "绑定失败", Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplication(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                bindCIDRequest.client_id = "2342342424";
+                bindCIDRequest.token = "24234dsfdsifdfsdf";
+
+                VolleryRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
             }
         });
     }

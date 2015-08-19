@@ -3,7 +3,7 @@ package com.zky.zkyutilsdemo.http;
 import com.android.volley.Response;
 import com.google.gson.reflect.TypeToken;
 import com.zky.zkyutilsdemo.http.base.BaseRequest;
-import com.zky.zkyutilsdemo.http.base.HttpResponseVolley;
+import com.zky.zkyutilsdemo.http.base.BaseResponse;
 
 public class VersionRequest extends BaseRequest<CheckVersionResponse> {
     public int platform = 1;
@@ -12,7 +12,7 @@ public class VersionRequest extends BaseRequest<CheckVersionResponse> {
 
 
     public VersionRequest(Response.Listener<CheckVersionResponse> responseListener, Response.ErrorListener errorListener) {
-        super(responseListener, errorListener, new TypeToken<HttpResponseVolley<CheckVersionResponse>>() {
+        super(responseListener, errorListener, new TypeToken<BaseResponse<CheckVersionResponse>>() {
         }.getType());
     }
 

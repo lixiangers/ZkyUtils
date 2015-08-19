@@ -8,8 +8,8 @@ import com.zky.zkyutilsdemo.MyApplication;
 
 import java.lang.reflect.Type;
 
-public abstract class BaseRequest<T> extends GsonRequest<T> {
-    public BaseRequest(Response.Listener responseListener, Response.ErrorListener errorListener, Type type) {
+public abstract class BaseRequest<T> extends GsonRequest<T> implements IVolleyRequest {
+    public BaseRequest(Response.Listener<T> responseListener, Response.ErrorListener errorListener, Type type) {
         super(responseListener, errorListener, type);
     }
 
@@ -27,6 +27,6 @@ public abstract class BaseRequest<T> extends GsonRequest<T> {
      */
     @Override
     public IVolleyRequest getVolleyRequest() {
-        return new HttpRequestVolley(this);
+        return this;
     }
 }

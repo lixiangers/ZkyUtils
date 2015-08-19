@@ -21,7 +21,9 @@ public class JsonUtils {
 
     private static Gson getGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
         gsonBuilder.setDateFormat("yyyy-MM-dd HH:mm:ss");
+        gsonBuilder.disableHtmlEscaping();
         return gsonBuilder.create();
     }
 
