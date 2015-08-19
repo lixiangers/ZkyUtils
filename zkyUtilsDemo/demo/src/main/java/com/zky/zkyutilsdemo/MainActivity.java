@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
 
+                versionRequest.version = "1.0.0";
                 VolleryRequestSender.getInstance(MyApplication.instace).send(versionRequest);
             }
         });
