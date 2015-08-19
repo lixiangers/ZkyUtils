@@ -9,8 +9,7 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-import com.zky.zkyutils.http.VolleryRequestSender;
+import com.zky.zkyutils.http.VolleyRequestSender;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
 import com.zky.zkyutilsdemo.http.VersionRequest;
@@ -39,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
                 });
 
                 versionRequest.version = "1.0.0";
-                VolleryRequestSender.getInstance(MyApplication.instace).send(versionRequest);
+                VolleyRequestSender.getInstance(MyApplication.instace).send(versionRequest);
             }
         });
 
@@ -61,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
                 bindCIDRequest.client_id = "2342342424";
                 bindCIDRequest.token = "24234dsfdsifdfsdf";
 
-                VolleryRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
+                VolleyRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
             }
         });
     }
