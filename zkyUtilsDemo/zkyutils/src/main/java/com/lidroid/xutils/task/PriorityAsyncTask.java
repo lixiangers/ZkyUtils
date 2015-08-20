@@ -20,6 +20,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import com.lidroid.xutils.util.LogUtils;
+import com.zky.zkyutils.utils.Constants;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
@@ -71,6 +72,7 @@ public abstract class PriorityAsyncTask<Params, Progress, Result> implements Tas
 
                 android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
                 //noinspection unchecked
+                //在被取消的时候也会执行 但是会有一点延迟 get()出来的还有值
                 return postResult(doInBackground(mParams));
             }
         };
@@ -78,6 +80,9 @@ public abstract class PriorityAsyncTask<Params, Progress, Result> implements Tas
         mFuture = new FutureTask<Result>(mWorker) {
             @Override
             protected void done() {
+                //在被取消的时候也会执行 但是get()的值会是null
+                com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "future done");
+
                 try {
                     postResultIfNotInvoked(get());
                 } catch (InterruptedException e) {
@@ -93,13 +98,17 @@ public abstract class PriorityAsyncTask<Params, Progress, Result> implements Tas
     }
 
     private void postResultIfNotInvoked(Result result) {
-        final boolean wasTaskInvoked = mTaskInvoked.get();
+        final boolean wasTaskInvoked = mTaskInvoked.get();//判断task 是否被执行
+        com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "post result by done:" + result + "  :" + wasTaskInvoked);
+
         if (!wasTaskInvoked) {
             postResult(result);
         }
     }
 
     private Result postResult(Result result) {
+        com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "post result:" + result);
+
         @SuppressWarnings("unchecked")
         Message message = sHandler.obtainMessage(MESSAGE_POST_RESULT,
                 new AsyncTaskResult<Result>(this, result));
@@ -217,6 +226,8 @@ public abstract class PriorityAsyncTask<Params, Progress, Result> implements Tas
      * @see #onCancelled(Object)
      */
     public final boolean cancel(boolean mayInterruptIfRunning) {
+        com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "cancel");
+
         mCancelled.set(true);
         return mFuture.cancel(mayInterruptIfRunning);
     }
@@ -367,8 +378,12 @@ public abstract class PriorityAsyncTask<Params, Progress, Result> implements Tas
 
     private void finish(Result result) {
         if (isCancelled()) {
+            com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "priority task is cancel");
+
             onCancelled(result);
         } else {
+            com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "priority task is finish");
+
             onPostExecute(result);
         }
     }
@@ -386,6 +401,8 @@ public abstract class PriorityAsyncTask<Params, Progress, Result> implements Tas
             switch (msg.what) {
                 case MESSAGE_POST_RESULT:
                     // There is only one result
+                    com.zky.zkyutils.utils.LogUtils.d(Constants.TASK_TAG, "handle result");
+
                     result.mTask.finish(result.mData[0]);
                     break;
                 case MESSAGE_POST_PROGRESS:
