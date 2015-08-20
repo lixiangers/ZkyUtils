@@ -15,7 +15,13 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.task.PriorityAsyncTask;
 import com.zky.zkyutils.http.VolleyRequestSender;
+import com.zky.zkyutils.utils.Constants;
+import com.zky.zkyutils.utils.LogUtils;
+import com.zky.zkyutils.utils.ToastUtils;
+import com.zky.zkyutilsdemo.backgroundTask.HandlerListener;
+import com.zky.zkyutilsdemo.backgroundTask.NumberCalcHandler;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
 import com.zky.zkyutilsdemo.http.VersionRequest;
@@ -24,6 +30,8 @@ import java.io.File;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private NumberCalcHandler calcHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +77,50 @@ public class MainActivity extends ActionBarActivity {
                 bindCIDRequest.token = "24234dsfdsifdfsdf";
 
                 VolleyRequestSender.getInstance(MyApplication.instance).send(bindCIDRequest);
+            }
+        });
+
+
+        findViewById(R.id.bt_begin_calc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calcHandler = new NumberCalcHandler(new HandlerListener() {
+                    @Override
+                    public void onStart() {
+                        ToastUtils.showText(getApplicationContext(), "On start");
+                        LogUtils.d(Constants.TASK_TAG, "On start");
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        ToastUtils.showText(getApplicationContext(), "On cancel");
+                        LogUtils.d(Constants.TASK_TAG, "On cancel");
+
+                    }
+
+                    @Override
+                    public void onProgress(int i) {
+                        ToastUtils.showText(getApplicationContext(), "current ：" + i);
+                        LogUtils.d(Constants.TASK_TAG, "current ：" + i);
+                    }
+
+                    @Override
+                    public void onFinish(String result) {
+                        ToastUtils.showText(getApplicationContext(), "finish ：" + result);
+                        LogUtils.d(Constants.TASK_TAG, "finish ：" + result);
+                    }
+                });
+
+                calcHandler.execute(1, 10, 1 * 1000);
+            }
+        });
+
+        findViewById(R.id.bt_cancel_cala).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (calcHandler != null)
+                    calcHandler.cancel();
             }
         });
     }
