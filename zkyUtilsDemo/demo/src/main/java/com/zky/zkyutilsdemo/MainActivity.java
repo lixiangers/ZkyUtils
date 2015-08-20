@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.lidroid.xutils.HttpUtils;
@@ -15,6 +16,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.task.Priority;
 import com.lidroid.xutils.task.PriorityAsyncTask;
 import com.zky.zkyutils.http.VolleyRequestSender;
 import com.zky.zkyutils.utils.Constants;
@@ -84,7 +86,7 @@ public class MainActivity extends ActionBarActivity {
         findViewById(R.id.bt_begin_calc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calcHandler = new NumberCalcHandler(new HandlerListener() {
+                HandlerListener listener = new HandlerListener() {
                     @Override
                     public void onStart() {
                         ToastUtils.showText(getApplicationContext(), "On start");
@@ -93,8 +95,8 @@ public class MainActivity extends ActionBarActivity {
                     }
 
                     @Override
-                    public void onCancel() {
-                        ToastUtils.showText(getApplicationContext(), "On cancel");
+                    public void onCancel(String result) {
+                        ToastUtils.showText(getApplicationContext(), "On cancel result:" + result);
                         LogUtils.d(Constants.TASK_TAG, "On cancel");
 
                     }
@@ -110,9 +112,26 @@ public class MainActivity extends ActionBarActivity {
                         ToastUtils.showText(getApplicationContext(), "finish ：" + result);
                         LogUtils.d(Constants.TASK_TAG, "finish ：" + result);
                     }
-                });
+                };
 
+                calcHandler = new NumberCalcHandler(listener);
                 calcHandler.execute(1, 10, 1 * 1000);
+
+                new NumberCalcHandler(listener).execute(11, 20, 2 * 1000);
+                new NumberCalcHandler(listener).execute(21, 30, 2 * 1000);
+                new NumberCalcHandler(listener).execute(31, 40, 2 * 1000);
+                new NumberCalcHandler(listener).execute(41, 50, 2 * 1000);
+                new NumberCalcHandler(listener).execute(51, 60, 2 * 1000);
+                new NumberCalcHandler(listener).execute(61, 70, 2 * 1000);
+                new NumberCalcHandler(listener).execute(71, 80, 2 * 1000);
+                new NumberCalcHandler(listener).execute(81, 90, 2 * 1000);
+                new NumberCalcHandler(listener).execute(91, 100, 2 * 1000);
+                new NumberCalcHandler(listener).execute(101, 110, 2 * 1000);
+                new NumberCalcHandler(listener).execute(111, 120, 2 * 1000);
+                new NumberCalcHandler(listener).execute(121, 130, 2 * 1000);
+                NumberCalcHandler priorityUpHandler = new NumberCalcHandler(listener);
+                priorityUpHandler.setPriority(Priority.UI_TOP);
+                priorityUpHandler.execute(131, 140, 2 * 1000);
             }
         });
 

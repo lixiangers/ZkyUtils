@@ -49,8 +49,8 @@ public class NumberCalcHandler extends PriorityAsyncTask<Integer, Integer, Strin
     }
 
     @Override
-    protected void onCancelled() {
-        super.onCancelled();
-        listener.onCancel();
+    protected void onCancelled(String s) {
+        super.onCancelled(s);
+        listener.onCancel(s);
     }
 }
