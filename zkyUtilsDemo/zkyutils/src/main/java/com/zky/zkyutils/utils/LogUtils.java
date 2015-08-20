@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 public class LogUtils {
-    public static boolean LOG_DEBUG;
+    public static boolean LOG_DEBUG = true;
     public static boolean LOG_FILE = LOG_DEBUG;
 
     public static void v(String tag, String msg) {
