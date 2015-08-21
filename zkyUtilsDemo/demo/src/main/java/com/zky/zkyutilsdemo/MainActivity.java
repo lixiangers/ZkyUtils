@@ -18,6 +18,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.zky.zkyutils.http.VolleyRequestSender;
+import com.zky.zkyutils.widget.DialogProgress;
 import com.zky.zkyutils.widget.EditDialog;
 import com.zky.zkyutils.widget.SelectTextDialog;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
@@ -117,6 +118,13 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
                 dialog.show();
+            }
+        });
+        //进度dialog
+        findViewById(R.id.bt_progress_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogProgress.showRequestDialog(MainActivity.this, "正在处理");
             }
         });
     }

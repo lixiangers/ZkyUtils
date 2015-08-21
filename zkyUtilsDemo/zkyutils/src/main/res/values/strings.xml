@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZkyUtils</string>
+    <string name="is_processing">正在处理，请稍后…</string>
 </resources>
