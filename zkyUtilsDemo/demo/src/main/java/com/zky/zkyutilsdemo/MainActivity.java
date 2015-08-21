@@ -1,7 +1,8 @@
 package com.zky.zkyutilsdemo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.lidroid.xutils.http.client.HttpRequest;
 import com.zky.zkyutils.http.VolleyRequestSender;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
+import com.zky.zkyutilsdemo.http.PickerViewTestActivity;
 import com.zky.zkyutilsdemo.http.VersionRequest;
 
 import java.io.File;
@@ -69,6 +71,13 @@ public class MainActivity extends ActionBarActivity {
                 bindCIDRequest.token = "24234dsfdsifdfsdf";
 
                 VolleyRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
+            }
+        });
+        findViewById(R.id.bt_picker_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(MainActivity.this, PickerViewTestActivity.class);
+                startActivity(intent);
             }
         });
     }

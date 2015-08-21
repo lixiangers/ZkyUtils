@@ -21,4 +21,11 @@
         android:layout_height="wrap_content"
         android:text="BindCID(POST)" />
 
+    <Button
+        android:id="@+id/bt_picker_view"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="滚轮选择器"
+       />
+
 </LinearLayout>
