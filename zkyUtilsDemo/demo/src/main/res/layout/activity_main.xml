@@ -33,5 +33,11 @@
         android:layout_height="wrap_content"
         android:text="选择dialog"
         />
+    <Button
+        android:id="@+id/bt_edit_dialog"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="可输入dialog"
+        />
 
 </LinearLayout>

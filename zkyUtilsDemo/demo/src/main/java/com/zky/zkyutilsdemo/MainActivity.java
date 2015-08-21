@@ -18,6 +18,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.zky.zkyutils.http.VolleyRequestSender;
+import com.zky.zkyutils.widget.EditDialog;
 import com.zky.zkyutils.widget.SelectTextDialog;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
@@ -75,6 +76,7 @@ public class MainActivity extends ActionBarActivity {
                 VolleyRequestSender.getInstance(MyApplication.instace).send(bindCIDRequest);
             }
         });
+        //滚轮选择
         findViewById(R.id.bt_picker_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +84,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+        //文本选择dialog
         findViewById(R.id.bt_select_dialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +94,29 @@ public class MainActivity extends ActionBarActivity {
                     text_dialog.setOnItemClickListener(itemClickListener);
                 }
                 text_dialog.show();
+            }
+        });
+        //可输入dialog
+        findViewById(R.id.bt_edit_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditDialog dialog = new EditDialog(MainActivity.this, true, 7);
+                dialog.setTitle("设置");
+                dialog.setContent("请输入", "");
+                dialog.setBothListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        if (v.getId() == R.id.btn_close) {
+                            String new_name = dialog.getValue();
+                            if (new_name.length() > 0) {
+                                Toast.makeText(MainActivity.this, new_name, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
     }
