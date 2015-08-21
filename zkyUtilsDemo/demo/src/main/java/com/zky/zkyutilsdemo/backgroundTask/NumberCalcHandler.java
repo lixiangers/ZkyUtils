@@ -37,24 +37,28 @@ public class NumberCalcHandler extends PriorityAsyncTask<Integer, Integer, Strin
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        listener.onStart();
+        if (listener != null)
+            listener.onStart();
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        listener.onFinish(s);
+        if (listener != null)
+            listener.onFinish(s);
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        listener.onProgress(values[0]);
+        if (listener != null)
+            listener.onProgress(values[0]);
     }
 
     @Override
-    protected void onCancelled(String s) {
-        super.onCancelled(s);
-        listener.onCancel(s);
+    protected void onCancelled() {
+        super.onCancelled();
+        if (listener != null)
+            listener.onCancel();
     }
 }

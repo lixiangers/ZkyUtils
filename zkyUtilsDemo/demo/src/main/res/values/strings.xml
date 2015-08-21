@@ -3,4 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="activity_http">App/Activity/http</string>
+    <string name="activity_background_task">App/Activity/Background task</string>
+    <string name="no_demos">no_demos</string>
+    <string name="http">HttpDemo</string>
+    <string name="http_description">Get,Post等请求基于Volley,下载，上传文件基于xUtils的Http模块</string>
+    <string name="background_task">具有优先级的后台任务Demo</string>
+    <string name="background_task_description">基于线程池的可以设置优先级，设置回调，可取消的后台任务</string>
 </resources>

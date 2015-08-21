@@ -57,6 +57,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".app.HttpActivity"
+            android:label="@string/activity_http">
+        </activity>
+
+        <activity
+            android:name=".app.BackgroundTaskActivity"
+            android:label="@string/activity_background_task">
+
+        </activity>
+
     </application>
 
 </manifest>

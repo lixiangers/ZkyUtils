@@ -3,7 +3,7 @@ package com.zky.zkyutilsdemo.backgroundTask;
 public interface HandlerListener {
     void onStart();
 
-    void onCancel(String result);
+    void onCancel();
 
     void onProgress(int i);
 
