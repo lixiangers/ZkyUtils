@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -17,6 +18,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.zky.zkyutils.http.VolleyRequestSender;
+import com.zky.zkyutils.widget.SelectTextDialog;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
 import com.zky.zkyutilsdemo.http.PickerViewTestActivity;
@@ -26,7 +28,7 @@ import java.io.File;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    private SelectTextDialog text_dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +82,31 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.bt_select_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (text_dialog == null) {
+                    text_dialog = new SelectTextDialog(MainActivity.this);
+                    text_dialog.setAction(new String[]{"女", "男"});
+                    text_dialog.setOnItemClickListener(itemClickListener);
+                }
+                text_dialog.show();
+            }
+        });
     }
+    AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            if (position == 0) {
+               Toast.makeText(MainActivity.this,"女",Toast.LENGTH_LONG).show();
+            } else if (position == 1) {
+                Toast.makeText(MainActivity.this,"男",Toast.LENGTH_LONG).show();
+            }
 
+            text_dialog.dismiss();
+        }
+    };
     private void downLoadFile() {
         HttpUtils httpUtils = new HttpUtils();
         httpUtils.download("url", "path", true, true, new RequestCallBack<File>() {

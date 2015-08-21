@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/reading_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#ffffffff">
+
+        <TextView
+            android:id="@+id/warning_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="10dip"
+            android:background="#ff0099ff"
+            android:textColor="#ffffffff"
+            android:text="选择效果" />
+
+        <ListView
+            android:id="@+id/waring_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:dividerHeight="1dip"
+            android:divider="#ffdddddd"
+            android:layout_below="@id/warning_title" />
+    </RelativeLayout>
+
+</RelativeLayout>

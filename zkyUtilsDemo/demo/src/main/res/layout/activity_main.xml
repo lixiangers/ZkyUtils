@@ -27,5 +27,11 @@
         android:layout_height="wrap_content"
         android:text="滚轮选择器"
        />
+    <Button
+        android:id="@+id/bt_select_dialog"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="选择dialog"
+        />
 
 </LinearLayout>
