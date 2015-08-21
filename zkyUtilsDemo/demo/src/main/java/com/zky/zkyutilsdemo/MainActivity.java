@@ -18,6 +18,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.zky.zkyutils.http.VolleyRequestSender;
+import com.zky.zkyutils.widget.AlertDialog;
 import com.zky.zkyutils.widget.DialogProgress;
 import com.zky.zkyutils.widget.EditDialog;
 import com.zky.zkyutils.widget.SelectTextDialog;
@@ -125,6 +126,24 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 DialogProgress.showRequestDialog(MainActivity.this, "正在处理");
+            }
+        });
+        //提示dialog
+        findViewById(R.id.bt_hint_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog dialog = new AlertDialog(MainActivity.this);
+                dialog.setCancelable(false);
+                dialog.displayWithStyle(AlertDialog.DisplayStyle.POSITIVE);
+                dialog.setMessage("提示语");
+                dialog.setPositiveButton("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+
+                    }
+                });
+                dialog.show();
             }
         });
     }
