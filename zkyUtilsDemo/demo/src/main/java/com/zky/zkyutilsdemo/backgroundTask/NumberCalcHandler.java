@@ -3,6 +3,7 @@ package com.zky.zkyutilsdemo.backgroundTask;
 import com.lidroid.xutils.task.PriorityAsyncTask;
 import com.zky.zkyutils.utils.Constants;
 import com.zky.zkyutils.utils.LogUtils;
+import com.zky.zkyutils.utils.StringUtils;
 
 public class NumberCalcHandler extends PriorityAsyncTask<Integer, Integer, String> {
     private HandlerListener listener;
@@ -14,6 +15,9 @@ public class NumberCalcHandler extends PriorityAsyncTask<Integer, Integer, Strin
     @Override
     protected String doInBackground(Integer... params) {
         LogUtils.d(Constants.TASK_TAG, "Thread Name:" + Thread.currentThread().getName());
+        if (params.length != 3)
+            return StringUtils.EMPTY;
+
         int start = params[0];
         int end = params[1];
         int intervalTime = params[2];
