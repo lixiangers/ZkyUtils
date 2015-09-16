@@ -7,4 +7,8 @@ public class ToastUtils {
     public static void showText(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
+
+    public static void showText(Context context, int text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
 }

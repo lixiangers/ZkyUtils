@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.String.format;
+
 public final class StringUtils {
 
     public static final Pattern mobileNumberPattern = Pattern.compile("^\\d{11}$");
@@ -74,5 +76,33 @@ public final class StringUtils {
 
     private static Long getRandom(int min, int max) {
         return Math.round(Math.random() * (max - min) + min);
+    }
+
+    /**
+     * 格式化文件大
+     *
+     * @param volume 文件大小
+     * @return 格式化的字符
+     */
+    public static String getVolume(long volume) {
+
+        float num = 1.0F;
+
+        String str = null;
+
+        if (volume < 1024) {
+            str = volume + "B";
+        } else if (volume < 1048576) {
+            num = num * volume / 1024;
+            str = format("%.1f", num) + "K";
+        } else if (volume < 1073741824) {
+            num = num * volume / 1048576;
+            str = format("%.1f", num) + "M";
+        } else if (volume < 1099511627776L) {
+            num = num * volume / 1073741824;
+            str = format("%.1f", num) + "G";
+        }
+
+        return str;
     }
 }
