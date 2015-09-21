@@ -1,5 +1,7 @@
 package com.zky.zkyutils.utils;
 
+import android.content.Context;
+
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -76,6 +78,11 @@ public final class StringUtils {
 
     private static Long getRandom(int min, int max) {
         return Math.round(Math.random() * (max - min) + min);
+    }
+
+    public static String formatTemplateString(Context context, int templateId, Object... params) {
+        String template = context.getResources().getText(templateId).toString();
+        return format(template, params);
     }
 
     /**
