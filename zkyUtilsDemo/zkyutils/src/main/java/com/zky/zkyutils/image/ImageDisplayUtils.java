@@ -14,7 +14,7 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 public class ImageDisplayUtils {
     public static void display(Context context, SimpleDraweeView simpleDraweeView, String netPath) {
-        display(context, simpleDraweeView, netPath, 0, 0);
+        simpleDraweeView.setImageURI(Uri.parse(netPath));
     }
 
     public static void display(Context context, SimpleDraweeView simpleDraweeView, String netPath, float ratio) {
