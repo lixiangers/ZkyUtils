@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ZkyUtils</string>
     <string name="down_url_null">下载地址为空</string>
+    <string name="is_processing">正在处理，请稍后…</string>
 </resources>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/reading_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_order_item"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <TextView
+            android:id="@+id/warning_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="提示"
+            android:textColor="@color/my_black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_below="@+id/warning_title"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerInside" />
+
+        <EditText
+            android:id="@+id/waring_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_image"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/doctor_find_input"
+            android:hint="请输入内容"
+            android:padding="10dip"
+            android:textColor="#ff000000"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/waring_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:text="提示"
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <View
+            android:id="@+id/h_devider"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/tv_tip"
+            android:layout_marginTop="15dp"
+            android:background="@color/split_stroke_color"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/ll_opt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_below="@id/h_devider"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_quit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_bg_dialog_left_white"
+                android:gravity="center"
+                android:padding="10dip"
+                android:text="取消"
+                android:textColor="@color/gray_normal"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <include
+                android:id="@+id/v_devider"
+                layout="@layout/cut_off_line"
+                android:layout_width="1px"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_bg_dialog_right_white"
+                android:gravity="center"
+                android:padding="10dip"
+                android:text="确定"
+                android:textColor="#ff159af3"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
