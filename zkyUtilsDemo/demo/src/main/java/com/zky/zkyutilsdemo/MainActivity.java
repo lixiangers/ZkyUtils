@@ -27,6 +27,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
+import com.zky.zkyutilsdemo.app.DialogTestActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
 
 public class MainActivity extends ListActivity {
@@ -71,6 +72,9 @@ public class MainActivity extends ListActivity {
             new DemoDetails(R.string.background_task,
                     R.string.background_task_description,
                     BackgroundTaskActivity.class),
+            new DemoDetails(R.string.test_dialog,
+                    R.string.test_dialog,
+                    DialogTestActivity.class)
     };
 
     @Override

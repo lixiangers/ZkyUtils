@@ -73,6 +73,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
+
+        <activity android:name=".app.DialogTestActivity"/>
     </application>
 
 </manifest>
