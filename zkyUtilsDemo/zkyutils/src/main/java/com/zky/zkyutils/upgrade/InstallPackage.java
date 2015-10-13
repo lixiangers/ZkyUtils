@@ -120,7 +120,7 @@ public class InstallPackage {
                     if (result.result == null) {
                         ToastUtils.showText(context, errorMessage);
                     } else {
-                        install(path);
+                        install(path) ;
                     }
                 }
 
@@ -139,16 +139,9 @@ public class InstallPackage {
      * @param path 可安装文件的路径，注意前面不带“file://”
      */
     public void install(String path) {
-        String command = "chmod 777 " + path;
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            runtime.exec(command);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + path), "application/vnd.android.package-archive");
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 
