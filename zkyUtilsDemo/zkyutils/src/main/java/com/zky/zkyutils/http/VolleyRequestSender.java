@@ -8,28 +8,32 @@ import com.android.volley.toolbox.Volley;
 
 import javax.net.ssl.SSLSocketFactory;
 
+
 /*
   Volley queue 帮助类
  */
 public class VolleyRequestSender {
 
     private volatile static VolleyRequestSender mInstance;
+    private final Context context;
+    private SSLSocketFactory sslSocketFactory;
     private RequestQueue mQueue;
+    private RequestQueue mHttpsQueue;
 
-    private VolleyRequestSender(Context context, SSLSocketFactory sslSocketFactory) {
-        mQueue = Volley.newRequestQueue(context, new OkHttpStack(sslSocketFactory));
+    private VolleyRequestSender(Context context) {
+        this.context = context;
+        mQueue = Volley.newRequestQueue(context, new OkHttpStack());
     }
 
     /**
      * @param context
-     * @param sslSocketFactory https ssl的认证类 如果不是https 传null
      * @return
      */
-    public static VolleyRequestSender getInstance(Context context, SSLSocketFactory sslSocketFactory) {
+    public static VolleyRequestSender getInstance(Context context) {
         if (mInstance == null)
             synchronized (VolleyRequestSender.class) {
                 if (mInstance == null) {
-                    mInstance = new VolleyRequestSender(context, sslSocketFactory);
+                    mInstance = new VolleyRequestSender(context);
                 }
             }
         return mInstance;
@@ -37,5 +41,12 @@ public class VolleyRequestSender {
 
     public void send(Request request) {
         mQueue.add(request);
+    }
+
+    public synchronized void sendHttps(Request request, SSLSocketFactory sslSocketFactory) {
+        this.sslSocketFactory = sslSocketFactory;
+        if (mHttpsQueue == null)
+            mHttpsQueue = Volley.newRequestQueue(context, new OkHttpStack(this.sslSocketFactory));
+        mHttpsQueue.add(request);
     }
 }

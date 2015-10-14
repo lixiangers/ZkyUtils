@@ -15,14 +15,19 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.zky.zkyutils.http.SSLSocketFactoryUtils;
 import com.zky.zkyutils.http.VolleyRequestSender;
+import com.zky.zkyutils.utils.ToastUtils;
 import com.zky.zkyutilsdemo.MyApplication;
 import com.zky.zkyutilsdemo.R;
 import com.zky.zkyutilsdemo.http.BindCIDRequest;
 import com.zky.zkyutilsdemo.http.CheckVersionResponse;
+import com.zky.zkyutilsdemo.http.HttpsTestRequest;
 import com.zky.zkyutilsdemo.http.VersionRequest;
 
 import java.io.File;
+
+import javax.net.ssl.SSLSocketFactory;
 
 
 public class HttpActivity extends ActionBarActivity {
@@ -48,7 +53,7 @@ public class HttpActivity extends ActionBarActivity {
                 });
 
                 versionRequest.version = "1.0.0";
-                VolleyRequestSender.getInstance(MyApplication.instance, null).send(versionRequest);
+                VolleyRequestSender.getInstance(MyApplication.instance).send(versionRequest);
             }
         });
 
@@ -70,7 +75,31 @@ public class HttpActivity extends ActionBarActivity {
                 bindCIDRequest.client_id = "2342342424";
                 bindCIDRequest.token = "24234dsfdsifdfsdf";
 
-                VolleyRequestSender.getInstance(MyApplication.instance, null).send(bindCIDRequest);
+                VolleyRequestSender.getInstance(MyApplication.instance).send(bindCIDRequest);
+            }
+        });
+
+        findViewById(R.id.bt_testHttps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HttpsTestRequest testRequest = new HttpsTestRequest(new Response.Listener<Object>() {
+                    @Override
+                    public void onResponse(Object response) {
+                        ToastUtils.showText(getApplicationContext(), "请求成功");
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        ToastUtils.showText(getApplicationContext(), error.getMessage());
+                    }
+                });
+
+                testRequest.version = "1.0";
+                testRequest.platform = "1";
+                //这里添加我们服务器对应https正式文件
+                SSLSocketFactory sslSocketFactory = SSLSocketFactoryUtils.getSSLSocketFactory(getApplication(), "sangebabakeyDev.cer");
+                VolleyRequestSender.getInstance(MyApplication.instance).sendHttps(testRequest,
+                        sslSocketFactory);
             }
         });
     }
