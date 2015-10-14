@@ -6,6 +6,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import javax.net.ssl.SSLSocketFactory;
+
 /*
   Volley queue 帮助类
  */
@@ -14,15 +16,20 @@ public class VolleyRequestSender {
     private volatile static VolleyRequestSender mInstance;
     private RequestQueue mQueue;
 
-    private VolleyRequestSender(Context context) {
-        mQueue = Volley.newRequestQueue(context);
+    private VolleyRequestSender(Context context, SSLSocketFactory sslSocketFactory) {
+        mQueue = Volley.newRequestQueue(context, new OkHttpStack(sslSocketFactory));
     }
 
-    public static VolleyRequestSender getInstance(Context context) {
+    /**
+     * @param context
+     * @param sslSocketFactory https ssl的认证类 如果不是https 传null
+     * @return
+     */
+    public static VolleyRequestSender getInstance(Context context, SSLSocketFactory sslSocketFactory) {
         if (mInstance == null)
             synchronized (VolleyRequestSender.class) {
                 if (mInstance == null) {
-                    mInstance = new VolleyRequestSender(context);
+                    mInstance = new VolleyRequestSender(context, sslSocketFactory);
                 }
             }
         return mInstance;
