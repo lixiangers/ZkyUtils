@@ -57,7 +57,7 @@ public class PickerViewTestActivity extends Activity {
                 j++;
             }
             pickerView.setData(data);
-            pickerView.setSelected(targetNum);//���ó�ʼֵ
+            pickerView.setSelected(targetNum);//设置初始值
             pickerView.setOnSelectListener(new PickerView.onSelectListener() {
                 @Override
                 public void onSelect(String text) {
