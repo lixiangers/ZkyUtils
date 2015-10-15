@@ -10,7 +10,7 @@ public abstract class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         setupDatabase();
-        Fresco.initialize(this);//初始化 fresco 图片加载框架
+        Fresco.initialize(this); //初始化 fresco 图片加载框架
     }
 
     /**
