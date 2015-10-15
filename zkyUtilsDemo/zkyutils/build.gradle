@@ -5,7 +5,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 version = "0.0.5"
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion "23.0.1"
 
     defaultConfig {
