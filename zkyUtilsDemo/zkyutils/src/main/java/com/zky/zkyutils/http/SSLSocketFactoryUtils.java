@@ -17,7 +17,14 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
 public class SSLSocketFactoryUtils {
-    public static SSLSocketFactory getSSLSocketFactory(Context context, String assetsFileName)  {
+    /**
+     * 根据*cer证书文件获取对应的SSLSocketFactory
+     *
+     * @param context
+     * @param assetsFileName
+     * @return
+     */
+    public static SSLSocketFactory getSSLSocketFactory(Context context, String assetsFileName) {
         // Load CAs from an InputStream
 // (could be from a resource or ByteArrayInputStream or ...)
         CertificateFactory cf = null;
