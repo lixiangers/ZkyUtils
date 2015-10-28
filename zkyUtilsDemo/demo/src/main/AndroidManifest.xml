@@ -60,7 +60,7 @@
 
         <activity
             android:name=".app.HttpActivity"
-            android:label="@string/activity_http"></activity>
+            android:label="@string/activity_http"/>
 
         <activity
             android:name=".app.BackgroundTaskActivity"
@@ -75,6 +75,10 @@
             android:theme="@android:style/Theme.NoTitleBar" />
 
         <activity android:name=".app.DialogTestActivity"/>
+
+        <activity android:name=".app.DialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog_activity"/>
     </application>
 
 </manifest>

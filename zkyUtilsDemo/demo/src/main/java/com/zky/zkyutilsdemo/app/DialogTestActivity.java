@@ -2,6 +2,7 @@ package com.zky.zkyutilsdemo.app;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
@@ -65,6 +66,13 @@ public class DialogTestActivity extends Activity implements MenuItemCallBack {
                 itemList.add(new CustomMenuItem("取消", 3));
                 menu.setMenuList(itemList);
                 menu.show();
+            }
+        });
+
+        findViewById(R.id.bt_test_dialog_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(),DialogActivity.class));
             }
         });
     }
