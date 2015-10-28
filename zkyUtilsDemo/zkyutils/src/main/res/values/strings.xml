@@ -2,4 +2,9 @@
     <string name="app_name">ZkyUtils</string>
     <string name="down_url_null">下载地址为空</string>
     <string name="is_processing">正在处理，请稍后…</string>
+    <string name="open_falsh_light">打开闪光灯</string>
+    <string name="please_input_qr_code">请将二维码放入框内</string>
+    <string name="please_input_bar_code">请将取景框对准条形码</string>
+    <string name="close_flash_light">关闭闪光灯</string>
+    <string name="open_flash_light">打开闪光灯</string>
 </resources>

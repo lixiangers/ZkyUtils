@@ -27,6 +27,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
+import com.zky.zkyutilsdemo.app.ScanTestActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
 
@@ -74,7 +75,10 @@ public class MainActivity extends ListActivity {
                     BackgroundTaskActivity.class),
             new DemoDetails(R.string.view,
                     R.string.view_description,
-                    ViewTestActivity.class)
+                    ViewTestActivity.class),
+            new DemoDetails(R.string.scan,
+                    R.string.scan_description,
+                    ScanTestActivity.class)
     };
 
     @Override

@@ -12,4 +12,6 @@
     <string name="background_task_description">基于线程池的可以设置优先级，设置回调，可取消的后台任务</string>
     <string name="view">View演示</string>
     <string name="view_description">从下到上弹出全屏的dialog,popup menu,bottom menu</string>
+    <string name="scan">扫描测试</string>
+    <string name="scan_description">一维,二维条码扫描</string>
 </resources>
