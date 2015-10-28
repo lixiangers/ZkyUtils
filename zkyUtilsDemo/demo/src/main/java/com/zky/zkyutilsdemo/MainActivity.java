@@ -72,8 +72,8 @@ public class MainActivity extends ListActivity {
             new DemoDetails(R.string.background_task,
                     R.string.background_task_description,
                     BackgroundTaskActivity.class),
-            new DemoDetails(R.string.test_dialog,
-                    R.string.test_dialog,
+            new DemoDetails(R.string.view,
+                    R.string.view_description,
                     DialogTestActivity.class)
     };
 

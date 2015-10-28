@@ -5,9 +5,21 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/bt_test"
+        android:id="@+id/bt_test_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="弹出dialog" />
+        android:text="从下到上弹出dialog" />
+
+    <Button
+        android:id="@+id/bt_test_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="从底部弹出菜单" />
+
+    <Button
+        android:id="@+id/bt_test_popup_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="从底部弹出popup菜单" />
 
 </LinearLayout>

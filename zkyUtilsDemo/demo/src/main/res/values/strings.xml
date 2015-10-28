@@ -10,5 +10,6 @@
     <string name="http_description">Get,Post等请求基于Volley,下载，上传文件基于xUtils的Http模块</string>
     <string name="background_task">具有优先级的后台任务Demo</string>
     <string name="background_task_description">基于线程池的可以设置优先级，设置回调，可取消的后台任务</string>
-    <string name="test_dialog">从下到上弹出全屏的dialog</string>
+    <string name="view">View演示</string>
+    <string name="view_description">从下到上弹出全屏的dialog,popup menu,bottom menu</string>
 </resources>

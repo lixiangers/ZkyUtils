@@ -20,17 +20,17 @@ import com.zky.zkyutils.utils.DeviceUtils;
 
 import java.util.List;
 
-public class CustomMenu extends PopupWindow implements OnClickListener {
+public class CustomBottomMenu extends PopupWindow implements OnClickListener {
     private RelativeLayout mRootView;
     private LinearLayout mItemLayout;
     private Context mContext;
-    private MenuItemCallBack mOnClickListener;
+    private MenuItemCallBack itemCallBack;
     private LayoutInflater layoutInflater;
 
-    public CustomMenu(Activity context, MenuItemCallBack itemsOnClick) {
+    public CustomBottomMenu(Activity context, MenuItemCallBack itemsOnClick) {
         super(context);
         this.mContext = context;
-        this.mOnClickListener = itemsOnClick;
+        this.itemCallBack = itemsOnClick;
         mRootView = new RelativeLayout(context);
         mRootView.setGravity(Gravity.BOTTOM);
         mItemLayout = new LinearLayout(context);
@@ -67,10 +67,10 @@ public class CustomMenu extends PopupWindow implements OnClickListener {
     public void setMenuList(List<CustomMenuItem> itemList) {
         mItemLayout.removeAllViews();
         for (int i = 0; i < itemList.size(); i++) {
-            View item = mOnClickListener.Obtain(itemList.get(i), layoutInflater);
+            View item = itemCallBack.Obtain(itemList.get(i), layoutInflater);
             item.setId(itemList.get(i).getId());
             item.setOnClickListener(this);
-            mItemLayout.addView(item, new LayoutParams(LayoutParams.MATCH_PARENT, DeviceUtils.dip2px(mContext,50)));
+            mItemLayout.addView(item, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             if (i != itemList.size() - 1) {
                 View child = new View(this.mContext);
                 child.setBackgroundResource(R.color.my_split_view_color);
@@ -86,7 +86,7 @@ public class CustomMenu extends PopupWindow implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        mOnClickListener.onClick(v);
+        itemCallBack.onClick(v);
         dismiss();
     }
 }
