@@ -27,7 +27,7 @@ import java.util.List;
 
 import static android.view.WindowManager.LayoutParams;
 
-public class DialogTestActivity extends Activity implements MenuItemCallBack {
+public class ViewTestActivity extends Activity implements MenuItemCallBack {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,7 @@ public class DialogTestActivity extends Activity implements MenuItemCallBack {
         findViewById(R.id.bt_test_popup_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomPopupMenu titlePopup = new CustomPopupMenu(DialogTestActivity.this, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                CustomPopupMenu titlePopup = new CustomPopupMenu(ViewTestActivity.this, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 titlePopup.addAction(new CustomMenuItem("设备详情", R.drawable.ic_detail));
                 titlePopup.addAction(new CustomMenuItem("成员管理", R.drawable.ic_create_group));
                 titlePopup.show(v);
@@ -59,7 +59,7 @@ public class DialogTestActivity extends Activity implements MenuItemCallBack {
         findViewById(R.id.bt_test_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomBottomMenu menu = new CustomBottomMenu(DialogTestActivity.this, DialogTestActivity.this);
+                CustomBottomMenu menu = new CustomBottomMenu(ViewTestActivity.this, ViewTestActivity.this);
                 List<CustomMenuItem> itemList = new ArrayList<CustomMenuItem>();
                 itemList.add(new CustomMenuItem("菜单1", 1));
                 itemList.add(new CustomMenuItem("菜单2", 2));
@@ -75,10 +75,17 @@ public class DialogTestActivity extends Activity implements MenuItemCallBack {
                 startActivity(new Intent(getApplication(),DialogActivity.class));
             }
         });
+
+        findViewById(R.id.bt_test_radio_group).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplication(),RadioGroupActivity.class));
+            }
+        });
     }
 
     private void showDialog() {
-        final Dialog dialog = new Dialog(DialogTestActivity.this, R.style.Dialog_Fullscreen);
+        final Dialog dialog = new Dialog(ViewTestActivity.this, R.style.Dialog_Fullscreen);
         Window window = dialog.getWindow();
         // 设置宽高
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);

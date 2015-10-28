@@ -74,11 +74,13 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
 
-        <activity android:name=".app.DialogTestActivity"/>
+        <activity android:name=".app.ViewTestActivity"/>
 
         <activity android:name=".app.DialogActivity"
             android:screenOrientation="portrait"
             android:theme="@style/dialog_activity"/>
+
+        <activity android:name=".app.RadioGroupActivity"/>
     </application>
 
 </manifest>
