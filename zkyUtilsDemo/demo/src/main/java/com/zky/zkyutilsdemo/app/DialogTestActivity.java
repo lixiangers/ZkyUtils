@@ -46,20 +46,19 @@ public class DialogTestActivity extends Activity {
         lp.width = display.getWidth(); //设置宽度
         dialog.getWindow().setAttributes(lp);
 
+        dialog.setCanceledOnTouchOutside(true);//点击外面消失
         // 设置监听
         Button ok = (Button) window.findViewById(R.id.btn_ok);
         Button cancel = (Button) window.findViewById(R.id.btn_cancel);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 dialog.dismiss();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 dialog.dismiss();
             }
         });
