@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.zky.zkyutils.view.CustomPopupMenu;
 import com.zky.zkyutils.view.MenuItemCallBack;
 import com.zky.zkyutils.widget.CustomAlertDialog;
 import com.zky.zkyutils.widget.CustomEditDialog;
+import com.zky.zkyutils.widget.ProgressDialogFactory;
 import com.zky.zkyutilsdemo.R;
 
 import java.util.ArrayList;
@@ -132,6 +134,20 @@ public class ViewTestActivity extends Activity implements MenuItemCallBack {
                     }
                 });
                 editDialog.show();
+            }
+        });
+
+        findViewById(R.id.bt_test_progress_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProgressDialogFactory.showRequestDialog(ViewTestActivity.this, "测试中...", false);
+                Handler handler = new Handler(getMainLooper());
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ProgressDialogFactory.hideRequestDialog();
+                    }
+                },3*1000);
             }
         });
     }

@@ -26,23 +26,30 @@
         android:id="@+id/bt_test_dialog_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dialog activity"/>
+        android:text="dialog activity" />
 
     <Button
         android:id="@+id/bt_test_radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自定义RadioGroup"/>
+        android:text="自定义RadioGroup" />
+
     <Button
         android:id="@+id/bt_test_alertDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自定义alertDialog"/>
+        android:text="自定义alertDialog" />
 
     <Button
         android:id="@+id/bt_test_EditDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自定义EditDialog"/>
+        android:text="自定义EditDialog" />
+
+    <Button
+        android:id="@+id/bt_test_progress_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义ProgressDialog" />
 
 </LinearLayout>
