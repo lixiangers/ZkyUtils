@@ -20,6 +20,8 @@ import com.zky.zkyutils.view.CustomBottomMenu;
 import com.zky.zkyutils.view.CustomMenuItem;
 import com.zky.zkyutils.view.CustomPopupMenu;
 import com.zky.zkyutils.view.MenuItemCallBack;
+import com.zky.zkyutils.widget.CustomAlertDialog;
+import com.zky.zkyutils.widget.CustomEditDialog;
 import com.zky.zkyutilsdemo.R;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class ViewTestActivity extends Activity implements MenuItemCallBack {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_dialog);
+        setContentView(R.layout.activity_test_view);
 
         findViewById(R.id.bt_test_dialog).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,14 +74,64 @@ public class ViewTestActivity extends Activity implements MenuItemCallBack {
         findViewById(R.id.bt_test_dialog_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplication(),DialogActivity.class));
+                startActivity(new Intent(getApplication(), DialogActivity.class));
             }
         });
 
         findViewById(R.id.bt_test_radio_group).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplication(),RadioGroupActivity.class));
+                startActivity(new Intent(getApplication(), RadioGroupActivity.class));
+            }
+        });
+
+        findViewById(R.id.bt_test_alertDialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CustomAlertDialog alertDialog = new CustomAlertDialog(ViewTestActivity.this);
+                alertDialog.displayWithStyle(CustomAlertDialog.DisplayStyle.POSITIVE_AND_NEGATIVE);
+                alertDialog.setNegativeButton("取消", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                        ToastUtils.showText(getApplicationContext(), "取消");
+                    }
+                });
+
+                alertDialog.setPositiveButton("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                        ToastUtils.showText(getApplicationContext(), "确定");
+                    }
+                });
+
+                alertDialog.show();
+            }
+        });
+
+        findViewById(R.id.bt_test_EditDialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CustomEditDialog editDialog = new CustomEditDialog(ViewTestActivity.this);
+                editDialog.setTitle("dfd");
+                editDialog.setContent("content", "value");
+                editDialog.setNegativeButton("取消", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        editDialog.dismiss();
+                        ToastUtils.showText(getApplicationContext(), "取消");
+                    }
+                });
+
+                editDialog.setPositiveButton("确定", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ToastUtils.showText(getApplicationContext(), "value:" + editDialog.getValue());
+                        editDialog.dismiss();
+                    }
+                });
+                editDialog.show();
             }
         });
     }
@@ -132,7 +184,7 @@ public class ViewTestActivity extends Activity implements MenuItemCallBack {
         tv.setText(item.getTitle());
         tv.setBackgroundResource(R.drawable.menu_item_bg);
         tv.setClickable(true);
-        tv.setHeight(DeviceUtils.dip2px(getApplicationContext(),50));
+        tv.setHeight(DeviceUtils.dip2px(getApplicationContext(), 50));
         return tv;
     }
 

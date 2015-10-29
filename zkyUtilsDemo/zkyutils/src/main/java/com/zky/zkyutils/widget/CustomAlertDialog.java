@@ -16,7 +16,7 @@ import static android.view.View.VISIBLE;
 /**
  * Created by dou on 2015/8/21.
  */
-public class AlertDialog extends Dialog {
+public class CustomAlertDialog extends Dialog {
     private final Activity context;
     private TextView titleView;
     protected Button positiveButton;
@@ -25,7 +25,7 @@ public class AlertDialog extends Dialog {
     private TextView messageTextView;
     private View splitView;
 
-    public AlertDialog(Activity context) {
+    public CustomAlertDialog(Activity context) {
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
         this.context = context;
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
