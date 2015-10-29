@@ -23,6 +23,7 @@ import com.zky.zkyutils.view.CustomPopupMenu;
 import com.zky.zkyutils.view.MenuItemCallBack;
 import com.zky.zkyutils.widget.CustomAlertDialog;
 import com.zky.zkyutils.widget.CustomEditDialog;
+import com.zky.zkyutils.widget.PickerView;
 import com.zky.zkyutils.widget.ProgressDialogFactory;
 import com.zky.zkyutilsdemo.R;
 
@@ -147,7 +148,14 @@ public class ViewTestActivity extends Activity implements MenuItemCallBack {
                     public void run() {
                         ProgressDialogFactory.hideRequestDialog();
                     }
-                },3*1000);
+                }, 3 * 1000);
+            }
+        });
+
+        findViewById(R.id.bt_pick_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PickerViewTestActivity.class));
             }
         });
     }

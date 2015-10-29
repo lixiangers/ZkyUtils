@@ -69,7 +69,7 @@
         </activity>
 
         <activity
-            android:name=".http.PickerViewTestActivity"
+            android:name=".app.PickerViewTestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar" />
