@@ -25,7 +25,7 @@ import android.view.Display;
 import android.view.WindowManager;
 
 
-import com.zky.zkyutils.utils.DebugLog;
+import com.zky.zkyutils.utils.LogUtils;
 
 import java.util.regex.Pattern;
 
@@ -109,7 +109,7 @@ final class CameraConfigurationManager {
         }
 
         Point cameraResolution = null;
-        DebugLog.v("preview", "=========1===:" + previewSizeValueString);
+        LogUtils.v("preview", "=========1===:" + previewSizeValueString);
         if (previewSizeValueString != null) {
             Log.d(TAG, "preview-size-values parameter: " + previewSizeValueString);
             cameraResolution = findBestPreviewSizeValue(previewSizeValueString, screenResolution);
@@ -128,7 +128,7 @@ final class CameraConfigurationManager {
         int bestX = 0;
         int bestY = 0;
         float diff = Integer.MAX_VALUE;
-        DebugLog.v("preview", "============:" + previewSizeValueString);
+        LogUtils.v("preview", "============:" + previewSizeValueString);
         for (String previewSize : COMMA_PATTERN.split(previewSizeValueString)) {
 
             previewSize = previewSize.trim();
@@ -178,7 +178,7 @@ final class CameraConfigurationManager {
                 diff = newDiff;
             }
         }
-        DebugLog.v(TAG, "============bestX:" + bestX + " bestY:" + bestY);
+        LogUtils.v(TAG, "============bestX:" + bestX + " bestY:" + bestY);
         if (bestX > 0 && bestY > 0) {
             return new Point(bestX, bestY);
         }

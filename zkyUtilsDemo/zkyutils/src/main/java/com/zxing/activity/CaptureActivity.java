@@ -29,7 +29,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.zky.zkyutils.R;
 import com.zky.zkyutils.utils.Constant;
-import com.zky.zkyutils.utils.DebugLog;
+import com.zky.zkyutils.utils.LogUtils;
 import com.zxing.camera.CameraManager;
 import com.zxing.decoding.CaptureActivityHandler;
 import com.zxing.decoding.InactivityTimer;
@@ -237,7 +237,7 @@ public class CaptureActivity extends Activity implements Callback {
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        DebugLog.v("surface", "===width:" + width + " height:" + height);
+        LogUtils.v("surface", "===width:" + width + " height:" + height);
     }
 
     @Override
