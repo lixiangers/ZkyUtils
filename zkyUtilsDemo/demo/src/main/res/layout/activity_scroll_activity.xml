@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="scroll"
+        android:text="scroll" />
+
+    <com.zky.zkyutilsdemo.app.customView.MyViewGroup
+        android:id="@+id/myviewGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ff0000"
+            android:text="我在這" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button" />
+
+
+    </com.zky.zkyutilsdemo.app.customView.MyViewGroup>
+
+    <com.zky.zkyutilsdemo.app.customView.ScrollTextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dfsfsfsdfdf"
+        android:textColor="@android:color/black" />
+</LinearLayout>

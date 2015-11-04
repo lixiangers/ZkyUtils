@@ -88,6 +88,9 @@
 
         <activity android:name="com.zxing.activity.CaptureActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".app.customView.MultiScreenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

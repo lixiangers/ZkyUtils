@@ -30,6 +30,7 @@ import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
 import com.zky.zkyutilsdemo.app.ScanTestActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
+import com.zky.zkyutilsdemo.app.customView.MultiScreenActivity;
 
 public class MainActivity extends ListActivity {
 
@@ -78,7 +79,10 @@ public class MainActivity extends ListActivity {
                     ViewTestActivity.class),
             new DemoDetails(R.string.scan,
                     R.string.scan_description,
-                    ScanTestActivity.class)
+                    ScanTestActivity.class),
+            new DemoDetails(R.string.customer_test,
+                    R.string.customer_test,
+                    MultiScreenActivity.class)
     };
 
     @Override

@@ -13,5 +13,7 @@
     <string name="view">View演示</string>
     <string name="view_description">从下到上弹出全屏的dialog,popup menu,bottom menu</string>
     <string name="scan">扫描测试</string>
+    <string name="customer_test">测试自定义view</string>
     <string name="scan_description">一维,二维条码扫描</string>
+    <string name="hello">hello scroll view</string>
 </resources>
