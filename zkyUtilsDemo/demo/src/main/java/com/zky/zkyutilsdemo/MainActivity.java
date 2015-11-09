@@ -31,6 +31,8 @@ import com.zky.zkyutilsdemo.app.ScanTestActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
 import com.zky.zkyutilsdemo.app.customView.MultiScreenActivity;
+import com.zky.zkyutilsdemo.app.customView.SlideCutlistViewActivity;
+import com.zky.zkyutilsdemo.app.customView.TouchEventActivity;
 
 public class MainActivity extends ListActivity {
 
@@ -82,7 +84,13 @@ public class MainActivity extends ListActivity {
                     ScanTestActivity.class),
             new DemoDetails(R.string.customer_test,
                     R.string.customer_test,
-                    MultiScreenActivity.class)
+                    MultiScreenActivity.class),
+            new DemoDetails(R.string.touch_event_test,
+                    R.string.touch_event_test,
+                    TouchEventActivity.class),
+            new DemoDetails(R.string.slide_list_view,
+                    R.string.slide_list_view,
+                    SlideCutlistViewActivity.class)
     };
 
     @Override

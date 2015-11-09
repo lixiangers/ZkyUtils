@@ -91,6 +91,12 @@
 
         <activity android:name=".app.customView.MultiScreenActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".app.customView.TouchEventActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".app.customView.SlideCutlistViewActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
