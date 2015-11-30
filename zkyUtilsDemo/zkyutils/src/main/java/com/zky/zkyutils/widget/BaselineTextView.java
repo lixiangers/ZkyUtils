@@ -25,7 +25,7 @@ public class BaselineTextView extends TextView {
         Log.d("fontMetrics", "Baseline  is:" + getBaseline());
         Log.d("fontMetrics", "Height  is:" + getHeight());
         Log.d("fontMetrics", "yOffset  is:" + yOffset);
-        canvas.translate(0, -yOffset / 2);//上移动，是上面没有空白
+        canvas.translate(0, -yOffset / 2);
         super.onDraw(canvas);
     }
 }
