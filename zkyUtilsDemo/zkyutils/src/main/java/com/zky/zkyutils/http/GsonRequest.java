@@ -14,6 +14,8 @@ import com.zky.zkyutils.utils.Constants;
 import com.zky.zkyutils.utils.JsonUtils;
 import com.zky.zkyutils.utils.LogUtils;
 
+import org.apache.http.protocol.HTTP;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -30,7 +32,7 @@ public abstract class GsonRequest<T> extends Request<String> {
 
     public GsonRequest(Response.Listener<T> responseListener, Response.ErrorListener errorListener, Type responseValueType) {
         super(errorListener);
-        setRetryPolicy(new DefaultRetryPolicy(Constants.HTTP_RETRY_NUMBER, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        setRetryPolicy(new DefaultRetryPolicy(Constants.HTTP_TIME_OUT, Constants.HTTP_RETRY_NUMBER, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         this.responseType = responseValueType;
         this.mListener = responseListener;
     }
@@ -39,7 +41,7 @@ public abstract class GsonRequest<T> extends Request<String> {
     protected Response<String> parseNetworkResponse(NetworkResponse response) {
         String jsonString;
         try {
-            jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers, HTTP.UTF_8));
         } catch (UnsupportedEncodingException e) {
             jsonString = new String(response.data);
         }
@@ -103,7 +105,7 @@ public abstract class GsonRequest<T> extends Request<String> {
         header.put("Content-Type", "application/json");
 
         header.put("Cache-Control", "no-cache");
-        header.put("Charsert", "UTF-8");
+        header.put("Charset", "UTF-8");
         if (Build.VERSION.SDK != null && Build.VERSION.SDK_INT > 13) {
             //HACK: fixed http://stackoverflow.com/questions/15411213/android-httpsurlconnection-eofexception
             header.put("Connection", "close");

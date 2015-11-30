@@ -1,5 +1,6 @@
 package com.zky.zkyutils.widget;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.widget.TextView;
@@ -12,7 +13,7 @@ import com.zky.zkyutils.R;
 public class ProgressDialogFactory {
     private static Dialog mDialog = null;
 
-    private static Dialog createRequestDialog(final Context context, String tip) {
+    private static Dialog createRequestDialog(final Activity context, String tip) {
         Dialog dialog = initDialog(context);
 
         TextView titleText = (TextView) dialog.findViewById(R.id.tvLoad);
@@ -31,16 +32,17 @@ public class ProgressDialogFactory {
         return dialog;
     }
 
-    public static void showRequestDialog(Context context, String content) {
+    public static void showRequestDialog(Activity context, String content) {
         showRequestDialog(context, content, true);
     }
 
-    public static void showRequestDialog(Context context, String content, boolean canCancel) {
+    public static void showRequestDialog(Activity context, String content, boolean canCancel) {
         hideRequestDialog();
         mDialog = createRequestDialog(context, content);
         mDialog.setCancelable(canCancel);
         try {
-            mDialog.show();
+            if (!context.isFinishing())
+                mDialog.show();
         } catch (Exception ex) {
             mDialog = null;
         }

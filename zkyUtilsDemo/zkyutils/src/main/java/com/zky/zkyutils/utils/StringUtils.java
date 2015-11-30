@@ -1,6 +1,7 @@
 package com.zky.zkyutils.utils;
 
 import android.content.Context;
+import android.widget.EditText;
 
 import java.math.BigInteger;
 import java.text.DateFormat;
@@ -111,5 +112,12 @@ public final class StringUtils {
         }
 
         return str;
+    }
+
+    public static void setEditTextRequestFocus(EditText tv) {
+        if (tv == null)
+            return;
+        tv.requestFocus();
+        tv.setSelection(tv.getText().toString().length());
     }
 }

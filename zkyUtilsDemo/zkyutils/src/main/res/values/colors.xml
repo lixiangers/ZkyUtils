@@ -76,4 +76,8 @@
     <color name="green">#FF34A350</color>
     <color name="transparent">#00000000</color>
     <color name="my_split_view_color">#d0d0d0</color>
+
+    <drawable name="white">#ffffffff</drawable>
+
+    <drawable name="black">#ff000000</drawable>
 </resources>
