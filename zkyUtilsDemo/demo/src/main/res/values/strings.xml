@@ -18,4 +18,5 @@
     <string name="slide_list_view">左右滑动ListView</string>
     <string name="scan_description">一维,二维条码扫描</string>
     <string name="hello">hello scroll view</string>
+    <string name="camera">自定义拍照</string>
 </resources>

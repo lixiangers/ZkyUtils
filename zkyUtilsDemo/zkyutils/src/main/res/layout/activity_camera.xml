@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></FrameLayout>
+
+    <Button
+        android:id="@+id/camera_switch"
+        android:layout_width="30dip"
+        android:layout_height="30dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/camera_switch_selector" />
+
+    <Button
+        android:id="@+id/camera_exit"
+        android:layout_width="30dip"
+        android:layout_height="30dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/camera_exit_selector" />
+
+    <Button
+        android:id="@+id/camera_shutter"
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dip"
+        android:background="@drawable/camera_shutter_selector" />
+
+    <RelativeLayout
+        android:id="@+id/boom"
+        android:layout_width="130dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dip"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/camera_ok"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/camera_ok_selector" />
+
+        <Button
+            android:id="@+id/camera_back"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/camera_back_selector" />
+    </RelativeLayout>
+</RelativeLayout>

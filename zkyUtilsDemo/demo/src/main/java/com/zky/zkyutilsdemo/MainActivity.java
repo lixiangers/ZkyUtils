@@ -27,14 +27,64 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
+import com.zky.zkyutilsdemo.app.CameraTestActivity;
+import com.zky.zkyutilsdemo.app.HttpActivity;
 import com.zky.zkyutilsdemo.app.ScanTestActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
-import com.zky.zkyutilsdemo.app.HttpActivity;
 import com.zky.zkyutilsdemo.app.customView.MultiScreenActivity;
 import com.zky.zkyutilsdemo.app.customView.SlideCutlistViewActivity;
 import com.zky.zkyutilsdemo.app.customView.TouchEventActivity;
 
 public class MainActivity extends ListActivity {
+
+    private static final DemoDetails[] demos = {
+            new DemoDetails(R.string.http, R.string.http_description,
+                    HttpActivity.class),
+            new DemoDetails(R.string.background_task,
+                    R.string.background_task_description,
+                    BackgroundTaskActivity.class),
+            new DemoDetails(R.string.view,
+                    R.string.view_description,
+                    ViewTestActivity.class),
+            new DemoDetails(R.string.scan,
+                    R.string.scan_description,
+                    ScanTestActivity.class),
+            new DemoDetails(R.string.customer_test,
+                    R.string.customer_test,
+                    MultiScreenActivity.class),
+            new DemoDetails(R.string.touch_event_test,
+                    R.string.touch_event_test,
+                    TouchEventActivity.class),
+            new DemoDetails(R.string.slide_list_view,
+                    R.string.slide_list_view,
+                    SlideCutlistViewActivity.class),
+            new DemoDetails(R.string.camera,
+                    R.string.camera,
+                    CameraTestActivity.class)
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setTitle("ZkyUtilsDemo");
+        ListAdapter adapter = new CustomArrayAdapter(
+                this.getApplicationContext(), demos);
+        setListAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        DemoDetails demo = (DemoDetails) getListAdapter().getItem(position);
+        startActivity(new Intent(this.getApplicationContext(),
+                demo.activityClass));
+    }
 
     private static class DemoDetails {
         private final int titleId;
@@ -68,51 +118,5 @@ public class MainActivity extends ListActivity {
             featureView.setDescriptionId(demo.descriptionId);
             return featureView;
         }
-    }
-
-    private static final DemoDetails[] demos = {
-            new DemoDetails(R.string.http, R.string.http_description,
-                    HttpActivity.class),
-            new DemoDetails(R.string.background_task,
-                    R.string.background_task_description,
-                    BackgroundTaskActivity.class),
-            new DemoDetails(R.string.view,
-                    R.string.view_description,
-                    ViewTestActivity.class),
-            new DemoDetails(R.string.scan,
-                    R.string.scan_description,
-                    ScanTestActivity.class),
-            new DemoDetails(R.string.customer_test,
-                    R.string.customer_test,
-                    MultiScreenActivity.class),
-            new DemoDetails(R.string.touch_event_test,
-                    R.string.touch_event_test,
-                    TouchEventActivity.class),
-            new DemoDetails(R.string.slide_list_view,
-                    R.string.slide_list_view,
-                    SlideCutlistViewActivity.class)
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("ZkyUtilsDemo");
-        ListAdapter adapter = new CustomArrayAdapter(
-                this.getApplicationContext(), demos);
-        setListAdapter(adapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        System.exit(0);
-    }
-
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        DemoDetails demo = (DemoDetails) getListAdapter().getItem(position);
-        startActivity(new Intent(this.getApplicationContext(),
-                demo.activityClass));
     }
 }
