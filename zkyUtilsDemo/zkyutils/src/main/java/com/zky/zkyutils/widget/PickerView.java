@@ -292,6 +292,10 @@ public class PickerView extends View {
         timer.schedule(mTask, 0, 10);
     }
 
+    public interface onSelectListener {
+        void onSelect(String text);
+    }
+
     class MyTimerTask extends TimerTask {
         Handler handler;
 
@@ -304,9 +308,5 @@ public class PickerView extends View {
             handler.sendMessage(handler.obtainMessage());
         }
 
-    }
-
-    public interface onSelectListener {
-        void onSelect(String text);
     }
 }
