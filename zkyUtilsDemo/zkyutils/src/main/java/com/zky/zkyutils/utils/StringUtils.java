@@ -15,6 +15,7 @@ public final class StringUtils {
 
     public static final Pattern mobileNumberPattern = Pattern.compile("^\\d{11}$");
     public static final String EMPTY = "";
+    public static final String EMAIL_PATTERN = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
     private static final Pattern whiteSpacePattern = Pattern.compile("\\s+");
     private static final Pattern numberPattern = Pattern.compile("[0-9]*");
     private static final Pattern bankCardNumberPattern = Pattern.compile("[0-9]{19}");
@@ -86,6 +87,17 @@ public final class StringUtils {
         return format(template, params);
     }
 
+    //判断email格式是否正确
+    public static boolean isEmail(String email) {
+        if (isBlank(email))
+            return false;
+
+        Pattern p = Pattern.compile(EMAIL_PATTERN);
+        Matcher m = p.matcher(email);
+
+        return m.matches();
+    }
+
     /**
      * 格式化文件大
      *
@@ -98,7 +110,9 @@ public final class StringUtils {
 
         String str = null;
 
-        if (volume < 1024) {
+        if (volume == 0) {
+            str = volume + "";
+        } else if (volume < 1024) {
             str = volume + "B";
         } else if (volume < 1048576) {
             num = num * volume / 1024;
