@@ -29,6 +29,7 @@ import android.widget.ListView;
 import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
 import com.zky.zkyutilsdemo.app.CameraTestActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
+import com.zky.zkyutilsdemo.app.ReactiveXAndroidActivity;
 import com.zky.zkyutilsdemo.app.ScanTestActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
 import com.zky.zkyutilsdemo.app.customView.MultiScreenActivity;
@@ -60,7 +61,10 @@ public class MainActivity extends ListActivity {
                     SlideCutlistViewActivity.class),
             new DemoDetails(R.string.camera,
                     R.string.camera,
-                    CameraTestActivity.class)
+                    CameraTestActivity.class),
+            new DemoDetails(R.string.reactive,
+                    R.string.reactive,
+                    ReactiveXAndroidActivity.class)
     };
 
     @Override

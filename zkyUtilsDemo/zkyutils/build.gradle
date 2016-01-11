@@ -43,6 +43,8 @@ dependencies {
     compile('com.squareup.okhttp:okhttp:2.5.0')
     compile('com.squareup.okhttp:okhttp-urlconnection:2.5.0')
     compile('joda-time:joda-time:2.9.1')
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
 }
 
 def siteUrl = 'https://github.com/zhongkeyun/ZkyUtils'    // project homepage

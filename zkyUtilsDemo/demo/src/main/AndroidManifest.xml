@@ -107,14 +107,18 @@
 
         <activity
             android:name="com.zky.zkyutils.activity.CameraActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".app.CameraTestActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.zky.zkyutils.activity.ClipPictureActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".app.ReactiveXAndroidActivity"
             android:screenOrientation="portrait" />
     </application>
 
