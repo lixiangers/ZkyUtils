@@ -8,6 +8,8 @@ import com.zky.zkyutils.utils.LogUtils;
 import com.zky.zkyutilsdemo.R;
 
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class ReactiveXAndroidActivity extends Activity {
     private String TAG = ReactiveXAndroidActivity.class.getSimpleName();
@@ -29,7 +31,7 @@ public class ReactiveXAndroidActivity extends Activity {
         rx.Observable observable = rx.Observable.create(new rx.Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
-                LogUtils.d(TAG, "currentThread:" + Thread.currentThread().getName());
+                LogUtils.d(TAG, "call currentThread:" + Thread.currentThread().getName());
                 subscriber.onNext("test");
             }
         });
@@ -47,10 +49,13 @@ public class ReactiveXAndroidActivity extends Activity {
 
             @Override
             public void onNext(String s) {
+                LogUtils.d(TAG, "onNext currentThread:" + Thread.currentThread().getName());
                 LogUtils.d(TAG, "onNext:" + s);
             }
         };
 
-        observable.subscribe(subscriber);
+        observable.subscribeOn(Schedulers.io()) //Observable 的call方法执行在子线程
+                .observeOn(AndroidSchedulers.mainThread())//Subscriber 的回调在主线程
+                .subscribe(subscriber);
     }
 }
