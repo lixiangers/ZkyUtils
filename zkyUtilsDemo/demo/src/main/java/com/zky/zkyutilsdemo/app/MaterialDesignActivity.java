@@ -7,7 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
+import com.zky.zkyutils.utils.ToastUtils;
 import com.zky.zkyutilsdemo.R;
 
 import java.util.ArrayList;
@@ -36,8 +38,12 @@ public class MaterialDesignActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(android.R.drawable.ic_dialog_alert);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        CustomActionView view = new CustomActionView(getApplicationContext());
+        actionBar.setCustomView(view);
+//        Toolbar parent =(Toolbar) view.getParent();
+//        parent.setContentInsetsAbsolute(0, 0);
 
         //初始化TabLayout的title数据集
         List<String> titles = new ArrayList<>();
