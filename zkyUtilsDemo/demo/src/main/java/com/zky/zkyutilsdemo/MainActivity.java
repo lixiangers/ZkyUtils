@@ -29,6 +29,7 @@ import android.widget.ListView;
 import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
 import com.zky.zkyutilsdemo.app.CameraTestActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
+import com.zky.zkyutilsdemo.app.MaterialDesignActivity;
 import com.zky.zkyutilsdemo.app.ReactiveXAndroidActivity;
 import com.zky.zkyutilsdemo.app.ScanTestActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
@@ -64,7 +65,10 @@ public class MainActivity extends ListActivity {
                     CameraTestActivity.class),
             new DemoDetails(R.string.reactive,
                     R.string.reactive,
-                    ReactiveXAndroidActivity.class)
+                    ReactiveXAndroidActivity.class),
+            new DemoDetails(R.string.material_design,
+                    R.string.material_design,
+                    MaterialDesignActivity.class)
     };
 
     @Override

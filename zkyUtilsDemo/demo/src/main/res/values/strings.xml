@@ -20,4 +20,5 @@
     <string name="hello">hello scroll view</string>
     <string name="camera">自定义拍照</string>
     <string name="reactive">Reactive Java</string>
+    <string name="material_design">MaterialDesign</string>
 </resources>

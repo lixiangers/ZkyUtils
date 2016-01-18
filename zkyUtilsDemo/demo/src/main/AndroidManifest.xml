@@ -120,6 +120,9 @@
         <activity
             android:name=".app.ReactiveXAndroidActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".app.MaterialDesignActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
