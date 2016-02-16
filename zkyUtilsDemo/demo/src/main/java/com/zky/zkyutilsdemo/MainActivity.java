@@ -17,23 +17,23 @@
 package com.zky.zkyutilsdemo;
 
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.zky.zkyutilsdemo.app.BackgroundTaskActivity;
 import com.zky.zkyutilsdemo.app.CameraTestActivity;
+import com.zky.zkyutilsdemo.app.CustomerViewActivity;
 import com.zky.zkyutilsdemo.app.HttpActivity;
 import com.zky.zkyutilsdemo.app.MaterialDesignActivity;
 import com.zky.zkyutilsdemo.app.ReactiveXAndroidActivity;
 import com.zky.zkyutilsdemo.app.ScanTestActivity;
+import com.zky.zkyutilsdemo.app.TestSurfaceViewActivity;
 import com.zky.zkyutilsdemo.app.ViewTestActivity;
 import com.zky.zkyutilsdemo.app.customView.MultiScreenActivity;
+import com.zky.zkyutilsdemo.app.customView.PathViewActivity;
 import com.zky.zkyutilsdemo.app.customView.SlideCutlistViewActivity;
 import com.zky.zkyutilsdemo.app.customView.TouchEventActivity;
 
@@ -51,15 +51,9 @@ public class MainActivity extends ListActivity {
             new DemoDetails(R.string.scan,
                     R.string.scan_description,
                     ScanTestActivity.class),
-            new DemoDetails(R.string.customer_test,
-                    R.string.customer_test,
-                    MultiScreenActivity.class),
             new DemoDetails(R.string.touch_event_test,
                     R.string.touch_event_test,
                     TouchEventActivity.class),
-            new DemoDetails(R.string.slide_list_view,
-                    R.string.slide_list_view,
-                    SlideCutlistViewActivity.class),
             new DemoDetails(R.string.camera,
                     R.string.camera,
                     CameraTestActivity.class),
@@ -68,7 +62,10 @@ public class MainActivity extends ListActivity {
                     ReactiveXAndroidActivity.class),
             new DemoDetails(R.string.material_design,
                     R.string.material_design,
-                    MaterialDesignActivity.class)
+                    MaterialDesignActivity.class),
+            new DemoDetails(R.string.customer_view,
+                    R.string.customer_view,
+                    CustomerViewActivity.class)
     };
 
     @Override
@@ -94,37 +91,4 @@ public class MainActivity extends ListActivity {
                 demo.activityClass));
     }
 
-    private static class DemoDetails {
-        private final int titleId;
-        private final int descriptionId;
-        private final Class<? extends android.app.Activity> activityClass;
-
-        public DemoDetails(int titleId, int descriptionId,
-                           Class<? extends android.app.Activity> activityClass) {
-            super();
-            this.titleId = titleId;
-            this.descriptionId = descriptionId;
-            this.activityClass = activityClass;
-        }
-    }
-
-    private static class CustomArrayAdapter extends ArrayAdapter<DemoDetails> {
-        public CustomArrayAdapter(Context context, DemoDetails[] demos) {
-            super(context, R.layout.feature, R.id.title, demos);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            FeatureView featureView;
-            if (convertView instanceof FeatureView) {
-                featureView = (FeatureView) convertView;
-            } else {
-                featureView = new FeatureView(getContext());
-            }
-            DemoDetails demo = getItem(position);
-            featureView.setTitleId(demo.titleId);
-            featureView.setDescriptionId(demo.descriptionId);
-            return featureView;
-        }
-    }
 }

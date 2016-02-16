@@ -121,8 +121,20 @@
             android:name=".app.ReactiveXAndroidActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".app.MaterialDesignActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".app.MaterialDesignActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".app.customView.PathViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".app.TestSurfaceViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.CustomerViewActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
