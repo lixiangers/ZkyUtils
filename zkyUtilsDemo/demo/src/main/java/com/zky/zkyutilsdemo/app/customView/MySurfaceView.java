@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -24,6 +23,7 @@ public class MySurfaceView extends SurfaceView {
     private int distance = 20;//每个点直接的距离
     private ArrayBlockingQueue<Integer> pressureValueQueue;
     private Path path;
+    private Integer[] data;
 
     public MySurfaceView(Context context) {
         super(context);
@@ -77,16 +77,21 @@ public class MySurfaceView extends SurfaceView {
 
     private Path getPath() {
         path.reset();
-        Integer[] data = new Integer[pressureValueQueue.size()];
-        Integer[] array = pressureValueQueue.toArray(data);
-        int size = array.length;
+        data = new Integer[pressureValueQueue.size()];
+        data = pressureValueQueue.toArray(data);
+        int size = data.length;
         if (size > 0) {
-            path.moveTo(getMeasuredWidth() - (size - 0) * distance, array[0]);
-            Log.d("canvas:", "moveTo:" + "X:" + (getMeasuredWidth() - (size - 0) * distance) + " Y:" + array[0]);
+            path.moveTo(getMeasuredWidth() - (size - 0) * distance, data[0]);
+//            Log.d("canvas:", "moveTo:" + "X:" + (getMeasuredWidth() - (size - 0) * distance) + " Y:" + array[0]);
 
             for (int i = 1; i < size; i++) {
-                path.lineTo(getMeasuredWidth() - (size - i) * distance, array[i]);
-                Log.d("canvas:", "lineTo:" + "X:" + (getMeasuredWidth() - (size - i) * distance) + " Y:" + array[i]);
+//                preX = getMeasuredWidth() - (size - i + 1) * distance;
+//                preY = array[i - 1];
+                //                controlX = (toX - preX) / 2 + toX;
+//                controlY = (toY - preY) / 2 + toY;
+//                path.quadTo(controlX, controlY, toX, toY);
+                path.lineTo(getMeasuredWidth() - (size - i) * distance, data[i]);
+//                Log.d("canvas:", "lineTo:" + "startX:" + preX + " startY:" + preY + " toX:" + toX + " toY:" + toY + " controlX:" + controlX + " controlY:" + controlY);
             }
         }
 
