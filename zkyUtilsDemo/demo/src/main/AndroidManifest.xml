@@ -135,6 +135,17 @@
         <activity
             android:name=".app.CustomerViewActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.SurfaceViewLockCanvasActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".app.customView.ArcViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".app.customView.OxygenLegendActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
