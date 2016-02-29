@@ -10,7 +10,9 @@ import android.widget.ListView;
 import com.zky.zkyutilsdemo.CustomArrayAdapter;
 import com.zky.zkyutilsdemo.DemoDetails;
 import com.zky.zkyutilsdemo.R;
+import com.zky.zkyutilsdemo.app.customView.ArcViewActivity;
 import com.zky.zkyutilsdemo.app.customView.MultiScreenActivity;
+import com.zky.zkyutilsdemo.app.customView.OxygenLegendActivity;
 import com.zky.zkyutilsdemo.app.customView.PathViewActivity;
 import com.zky.zkyutilsdemo.app.customView.SlideCutlistViewActivity;
 
@@ -27,7 +29,16 @@ public class CustomerViewActivity extends ListActivity {
                     PathViewActivity.class),
             new DemoDetails(R.string.test_surface_view,
                     R.string.test_surface_view,
-                    TestSurfaceViewActivity.class)
+                    TestSurfaceViewActivity.class),
+            new DemoDetails(R.string.surface_lock_test,
+                    R.string.surface_lock_test,
+                    SurfaceViewLockCanvasActivity.class),
+            new DemoDetails(R.string.acr_view,
+                    R.string.acr_view,
+                    ArcViewActivity.class),
+            new DemoDetails(R.string.oxygen_legend,
+                    R.string.oxygen_legend,
+                    OxygenLegendActivity.class)
     };
 
     @Override

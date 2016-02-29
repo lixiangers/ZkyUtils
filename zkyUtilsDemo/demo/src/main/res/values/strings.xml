@@ -23,5 +23,8 @@
     <string name="material_design">MaterialDesign</string>
     <string name="path_view">模拟心电图</string>
     <string name="test_surface_view">TestSurfaceView</string>
+    <string name="surface_lock_test">SurfaceView lock unlock</string>
+    <string name="acr_view">动画的圆环，中间数据文本也是动画变化</string>
+    <string name="oxygen_legend">一个血氧范围图例的view，里面有画文字，图像等</string>
     <string name="customer_view">CustomerView</string>
 </resources>
