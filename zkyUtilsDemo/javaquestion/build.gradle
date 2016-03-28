@@ -4,6 +4,12 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+    }
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
