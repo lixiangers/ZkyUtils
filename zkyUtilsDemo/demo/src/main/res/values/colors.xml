@@ -2,4 +2,7 @@
 <resources>
     <color name="menu_item_selected_bg">#e5e5e5</color>
     <color name="menu_item_normal_bg">#ffffff</color>
+    <color name="legendLow">#ff8e3e</color>
+    <color name="legendNormal">#50b906</color>
+    <color name="legendHeigh">#ed6942</color>
 </resources>
